@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>BarliakApp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar glass-card">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">🎵</div>
+        <div>
+          <h1>BarliakApp</h1>
+          <p>Estudio creativo interactivo para todas las edades</p>
+        </div>
+      </div>
+      <button id="saveAllBtn" class="btn btn-primary">Guardar todo</button>
+    </header>
+
+    <main id="views">
+      <section class="view active" data-view="inicio">
+        <div class="hero glass-card">
+          <h2>¡Crea, juega, aprende y comparte!</h2>
+          <p>
+            Inspirada en interfaces vibrantes y táctiles de juegos modernos: paneles redondeados,
+            respuestas rápidas al toque, capas coloridas y mucha diversión.
+          </p>
+          <div class="pill-grid">
+            <button class="pill" data-nav="dibujo">🎨 Dibujo</button>
+            <button class="pill" data-nav="musica">🎹 Música</button>
+            <button class="pill" data-nav="minijuegos">🕹️ Minijuegos</button>
+            <button class="pill" data-nav="perfil">👤 Mi perfil</button>
+          </div>
+        </div>
+        <div class="grid-cards">
+          <article class="glass-card card">
+            <h3>Modo Estudio</h3>
+            <p>Dibuja con pinceles, colores vivos y exporta tus ideas en segundos.</p>
+          </article>
+          <article class="glass-card card">
+            <h3>Modo BeatLab</h3>
+            <p>Crea loops musicales por pasos y guárdalos como proyectos.</p>
+          </article>
+          <article class="glass-card card">
+            <h3>Modo Juego</h3>
+            <p>Retos creativos rápidos para estimular imaginación y reflejos.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" data-view="dibujo">
+        <div class="glass-card panel">
+          <h2>Estudio de Dibujo</h2>
+          <div class="tool-row">
+            <label>Tamaño <input id="brushSize" type="range" min="1" max="35" value="8" /></label>
+            <label>Color <input id="brushColor" type="color" value="#ff4f8b" /></label>
+            <button id="eraserBtn" class="btn">Borrador</button>
+            <button id="clearCanvasBtn" class="btn">Limpiar</button>
+            <button id="saveDrawingBtn" class="btn btn-primary">Guardar dibujo</button>
+          </div>
+          <canvas id="drawCanvas" width="900" height="500"></canvas>
+        </div>
+      </section>
+
+      <section class="view" data-view="musica">
+        <div class="glass-card panel">
+          <h2>BeatLab Musical</h2>
+          <div class="tool-row">
+            <button id="playBeatBtn" class="btn btn-primary">▶ Reproducir</button>
+            <button id="stopBeatBtn" class="btn">⏹ Parar</button>
+            <label>BPM <input id="bpmInput" type="range" min="70" max="180" value="110" /></label>
+            <button id="saveBeatBtn" class="btn">Guardar beat</button>
+          </div>
+          <div id="sequencer" class="sequencer"></div>
+        </div>
+      </section>
+
+      <section class="view" data-view="minijuegos">
+        <div class="grid-cards">
+          <div class="glass-card panel">
+            <h2>Minijuego: Color Flash</h2>
+            <p>Memoriza la secuencia de colores y repítela.</p>
+            <button id="startFlashGame" class="btn btn-primary">Iniciar</button>
+            <div id="flashPads" class="pads"></div>
+            <p id="flashStatus" class="status">Puntuación: 0</p>
+          </div>
+          <div class="glass-card panel">
+            <h2>Minijuego: Idea Rápida</h2>
+            <p>Genera retos creativos sorpresa para dibujar o componer.</p>
+            <button id="ideaBtn" class="btn">Nuevo reto</button>
+            <p id="ideaText" class="idea">Pulsa para recibir un desafío creativo.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" data-view="perfil">
+        <div class="glass-card panel">
+          <h2>Perfil</h2>
+          <div class="tool-row">
+            <input id="profileName" placeholder="Tu nombre creativo" maxlength="24" />
+            <button id="saveProfileBtn" class="btn btn-primary">Guardar perfil</button>
+          </div>
+          <h3>Proyectos guardados</h3>
+          <ul id="projectList" class="project-list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav glass-card">
+      <button data-nav="inicio" class="active">Inicio</button>
+      <button data-nav="dibujo">Dibujo</button>
+      <button data-nav="musica">Música</button>
+      <button data-nav="minijuegos">Juegos</button>
+      <button data-nav="perfil">Perfil</button>
+    </nav>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
